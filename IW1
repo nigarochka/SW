@@ -1,0 +1,32 @@
+qwe = str(input())
+if (len(qwe)>=3 and len(qwe)<=7):
+    print("Принадлежит множеству 1")
+    print("Введите четыре числа")
+    a = float(input())
+    b = float(input())
+    c = float(input())
+    d = float(input())
+    print(min(a,b,c,d))
+    print(max(a,b,c,d))
+    if( a<c<d<b or a>c>d>b):
+      print(c*d)
+    elif(b<c<a<d or b>c>a>d):
+      print(c*a)
+    elif(c<a<b<d or c>a>b>d):
+      print(a*b)
+    elif(b<a<d<c or b>a>d>c):
+      print(a*d)
+elif (20<len(qwe)<30):
+    print("Множество 3")
+    print("Введите строку")
+    n = str(input())
+    if "до" or "ре" in n:
+      print("Музыкальная пауза")
+elif (10<len(qwe)<15):
+    print("Множество 2")
+    a = len(qwe)**(len(qwe)-8)
+    print(a)
+    if len(str(a)) == 6:
+        print(max(str(a)))
+else:
+    print("Строка не попала в множество")
