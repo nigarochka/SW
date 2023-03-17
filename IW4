@@ -1,0 +1,63 @@
+print('задание 1')
+import math
+import statistics
+
+
+def myFunc(*args):
+    print('Среднее арифметическое:', statistics.mean(args))
+    print('Дисперсия:', round(statistics.pvariance(args), 3))
+    print('Среднеквадратическое отклонение:', round(math.sqrt(statistics.pvariance(args)), 3))
+    print('Коэффициент вариации:', round(math.sqrt(statistics.pvariance(args)) / statistics.mean(args), 3))
+
+
+n = int(input('Введите желаемое количество значений: '))
+myList = []
+for _ in range(n):
+    myList.append(float(input()))
+myFunc(*myList)
+
+
+print('задание 2')
+
+
+def myFunc(*args):
+    list_of_str = []
+    list_of_num = []
+    list_of_bool = []
+    list_of_other = []
+    for i in range(len(args)):
+        a = str(args[i])
+        b = args[i]
+        if type(b) == bool:
+            list_of_bool.append(b)
+        elif a.isalpha():
+            list_of_str.append(b)
+        elif a.replace('.', '').isdigit():
+            if '.' in a:
+                list_of_num.append(float(a))
+            else:
+                list_of_num.append(int(a))
+        else:
+            list_of_other.append(b)
+    print('list_of_str', list_of_str)
+    print('list_of_num', list_of_num)
+    print('list_of_bool', list_of_bool)
+    print('list_of_other', list_of_other)
+
+
+myFunc(False, 3.3, (666, 7), True, 'dream', 22, ['в самое ', 'сердце'])
+
+print('задание 3')
+
+def my_Func1(arg, **kwargs):
+    for i in range(len(kwargs)):
+        if arg == list(kwargs)[i]:
+            print('{}: {}'.format(arg, kwargs.get(arg)))
+        a = list(kwargs.values())[i]
+        if arg == list(a)[0]:
+            print(a)
+
+
+my_Dict1 = {'1': {'DEBUG': 'Tracemod'}, '2': {'ERROR': 'Null pointer exception'}, '3': {'INFO': 'startGameAllert'},
+          '4': {'DEBUG': 'sendAllert'}, '5': {'ERROR': 'No valid JSON'}, 'ERROR': 'Error'}
+my_Func1('ERROR', **my_Dict1)
