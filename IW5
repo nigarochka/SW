@@ -1,0 +1,77 @@
+import random
+class Cardrub:
+  list_departments = ['Managment', 'Development', 'QA', 'Support']
+  list_status = ['Работает', 'Отпуск', 'Больничный', 'Уволен']
+
+  def __init__(self, surname, position, salary, department):
+    self.surname = surname
+    self.position = position
+    self.salary = salary
+    self.department = Cardrub.list_departments[department]
+    self.status = Cardrub.list_status[0]
+    self.all_payments = []
+
+  def changeStatus(self, nstatus):
+    self.status = Cardrub.list_status[nstatus]
+
+  def payCalc(self):
+    if self.status == 'Уволен':
+      print(f'{self.surname} Работник уволен')
+    elif self.status == 'Больничный':
+      pay = self.salary*0.85
+      self.all_payments.append(pay)
+      print(f'{self.surname} выплата составила {pay}')
+    elif self.status == 'Отпуск':
+      pay = self.salary + random.randint(1000, 2000)
+      self.all_payments.append(pay)
+      print(f'{self.surname} получил отпускные в размере {pay}')
+    elif self.status == 'Работает':
+      if self.department == 'Managment':
+        pay = self.salary + random.randint(1000,2000)
+        self.all_payments.append(pay)
+        print(f'{self.surname} получил выплату в размере {pay}')
+      else:
+        pay = self.salary + random.randint(0, 2000)
+        self.all_payments.append(pay)
+        print(f'{self.surname} получил выплату в размере {pay}')
+
+  def getAllPayments(self):
+    print(f'Выплаты {self.surname}:')
+    for pay in self.all_payments:
+      print(pay)
+
+Rob = Cardrub(surname='Smith', department=2, position='Web-developer', salary=4000)
+print(Rob.position, Rob.status)
+Rob.payCalc()
+Rob.payCalc()
+Rob.changeStatus(2)
+print(Rob.status)
+Rob.payCalc()
+Rob.getAllPayments()
+Rob1 = Cardrub(surname='Derek', department=0, position='Director', salary=10000)
+print(Rob1.position, Rob1.status)
+Rob1.payCalc()
+Rob1.payCalc()
+Rob1.changeStatus(1)
+print(Rob1.status)
+Rob1.payCalc()
+Rob1.getAllPayments()
+Rob3 = Cardrub(surname='Darsy', department=3, position='Engineer', salary=5000)
+print(Rob3.position, Rob3.status)
+Rob3.payCalc()
+Rob3.payCalc()
+Rob3.changeStatus(1)
+print(Rob3.status)
+Rob3.payCalc()
+Rob3.getAllPayments()
+Rob4 = Cardrub(surname='Jhon', department=1, position='Reenactor', salary=5000)
+print(Rob4.position, Rob4.status)
+Rob4.payCalc()
+Rob4.payCalc()
+Rob4.changeStatus(0)
+print(Rob4.status)
+Rob4.payCalc()
+Rob4.getAllPayments()
+
+
+
